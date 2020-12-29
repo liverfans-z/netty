@@ -1,6 +1,6 @@
 package com.zhangjr.netty.inboundhandlerandoutboundhandler.client;
 
-import com.zhangjr.netty.inboundhandlerandoutboundhandler.server.MyByteToLongDecoder;
+import com.zhangjr.netty.inboundhandlerandoutboundhandler.server.MyByteToLongDecoder2;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -27,7 +27,10 @@ public class MyClientInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast(new MyLongToByteEncoder());
 
         //入站解码器(入站handler)
-        pipeline.addLast(new MyByteToLongDecoder());
+//        pipeline.addLast(new MyByteToLongDecoder());
+        
+        //ReplayingDecoder解码器
+        pipeline.addLast(new MyByteToLongDecoder2());
 
         //加入一个自定义的handler，处理业务逻辑
         pipeline.addLast(new MyClientHandler());

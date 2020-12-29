@@ -17,7 +17,10 @@ public class MyServerInitializer extends ChannelInitializer<SocketChannel> {
         ChannelPipeline pipeline = ch.pipeline();
 
         //入站的handler，进行解码 MyByteToLongDecoder
-        pipeline.addLast(new MyByteToLongDecoder());
+//        pipeline.addLast(new MyByteToLongDecoder());
+
+        //ReplayingDecoder解码器
+        pipeline.addLast(new MyByteToLongDecoder2());
 
         //出站handler，给客户端返回数据，会走这个encoder。它和上面的decoder互不干扰
         pipeline.addLast(new MyLongToByteEncoder());
