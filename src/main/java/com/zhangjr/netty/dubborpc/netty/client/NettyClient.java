@@ -48,6 +48,7 @@ public class NettyClient {
                     //设置要发给服务器端的信息
                     client.setParameter(providerName + args[0]);
 
+                    //把client提交到线程池去执行，并得到返回结果。
                     return executorService.submit(client).get();
                 }));
     }
